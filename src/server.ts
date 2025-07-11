@@ -9,7 +9,7 @@ import { NovelScheduler } from './scheduler';
 import { ImageGenerator } from './image-generator';
 import { AddBookRequest, AddBookResponse, BookUpdateResult, ErrorResponse } from './types';
 
-dotenv.config();
+dotenv.config({ path: '.env.local' });
 
 const app = express();
 const PORT = process.env.PORT || 3000;
