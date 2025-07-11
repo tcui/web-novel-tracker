@@ -7,8 +7,10 @@ An automated web novel chapter tracker with AI-powered daily summaries. Track yo
 - 📚 **Book Management**: Add/remove web novels by URL
 - 🔍 **Automatic Chapter Detection**: Scans for new chapters every 6 hours
 - 🤖 **AI Summarization**: Generates daily summaries using Anthropic Claude
-- 📊 **Dashboard Interface**: Clean web interface for managing your library
+- 🎨 **AI Image Generation**: Creates chapter sketches using Together AI FLUX.1
+- 📊 **Dashboard Interface**: Clean two-column web interface for managing your library
 - 📅 **Scheduling**: Automated daily summary generation
+- 🌐 **Multi-language Support**: Chinese and English content detection
 - 💾 **Data Persistence**: JSON-based storage for books and summaries
 
 ## Setup
@@ -16,6 +18,7 @@ An automated web novel chapter tracker with AI-powered daily summaries. Track yo
 ### Prerequisites
 - Node.js 16+ installed
 - Anthropic API key for summarization features
+- Together AI API key for image generation
 
 ### Installation
 
@@ -27,11 +30,14 @@ npm install
 2. **Configure environment**:
 ```bash
 cp .env.example .env
-# Edit .env and add your Anthropic API key
+# Edit .env and add your API keys:
+# ANTHROPIC_API_KEY=your_anthropic_key_here
+# TOGETHER_API_KEY=your_together_key_here
 ```
 
-3. **Start the server**:
+3. **Build and start the server**:
 ```bash
+npm run build
 npm start
 ```
 
@@ -75,6 +81,7 @@ http://localhost:3000
 
 ### Environment Variables
 - `ANTHROPIC_API_KEY` - Required for AI summarization
+- `TOGETHER_API_KEY` - Required for AI image generation
 - `PORT` - Server port (default: 3000)
 - `NODE_ENV` - Environment mode
 
@@ -86,19 +93,28 @@ http://localhost:3000
 ## File Structure
 
 ```
-├── server.js          # Main server file
-├── scraper.js         # Web scraping logic
-├── storage.js         # JSON data storage
-├── summarizer.js      # AI summarization
-├── scheduler.js       # Automated scheduling
-├── public/
-│   ├── index.html     # Main dashboard
-│   ├── style.css      # Styling
-│   └── script.js      # Frontend JavaScript
-└── data/              # Generated data files
-    ├── books.json     # Tracked books
-    ├── summaries.json # Generated summaries
-    └── history.json   # Chapter detection history
+├── src/                    # TypeScript source files
+│   ├── server.ts           # Main Express server
+│   ├── scraper.ts          # Web scraping logic
+│   ├── storage.ts          # JSON data storage
+│   ├── summarizer.ts       # AI summarization (Anthropic Claude)
+│   ├── image-generator.ts  # AI image generation (Together AI)
+│   ├── scheduler.ts        # Automated scheduling
+│   ├── types.ts           # TypeScript type definitions
+│   └── logger.ts          # Winston-based logging
+├── dist/                   # Compiled JavaScript output
+├── public/                 # Static web assets
+│   ├── index.html         # Main dashboard (two-column layout)
+│   ├── style.css          # Responsive styling
+│   └── script.js          # Frontend JavaScript
+├── generated/             # AI-generated content (gitignored)
+│   └── images/            # Generated chapter sketches
+├── data/                  # JSON data files
+│   ├── books.json         # Tracked books
+│   ├── summaries.json     # Generated summaries with image URLs
+│   └── history.json       # Chapter detection history
+├── logs/                  # Application logs
+└── CLAUDE.md              # Documentation for Claude Code
 ```
 
 ## Development
@@ -109,19 +125,25 @@ npm run dev
 ```
 
 ### Adding New Novel Sites
-1. Update `scraper.js` with site-specific selectors
+1. Update `src/scraper.ts` with site-specific selectors
 2. Test chapter detection with sample URLs
 3. Adjust content extraction as needed
+4. Run `npm run build` to compile TypeScript changes
 
 ## Troubleshooting
 
 ### Common Issues
-- **API Rate Limits**: Adjust delays in scheduler.js
-- **Scraping Blocked**: Check User-Agent headers in scraper.js
+- **API Rate Limits**: Adjust delays in `src/scheduler.ts`
+- **Scraping Blocked**: Check User-Agent headers in `src/scraper.ts`
 - **Missing Summaries**: Verify Anthropic API key configuration
+- **Image Generation Errors**: Check Together AI API key and logs
+- **TypeScript Compilation**: Run `npm run build` after code changes
 
 ### Logs
-- Server logs show chapter detection and summary generation
+- Application logs are stored in `logs/` directory
+- **combined.log**: All application logs
+- **error.log**: Error-only logs
+- Look for `🖼️ IMAGE URL:` entries to verify image generation
 - Check console for detailed error messages
 
 ## License
