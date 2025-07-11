@@ -17,7 +17,7 @@ class ImageGenerator {
             logger.info('Together API key found, initializing client');
         }
         
-        this.imagesDir = path.join(__dirname, '..', 'public', 'images');
+        this.imagesDir = path.join(__dirname, '..', 'generated', 'images');
         this.ensureImagesDirectory();
     }
 

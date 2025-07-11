@@ -10,8 +10,8 @@ dist/
 # Generated data
 data/
 
-# Generated images
-public/images/
+# Generated content (images, etc.)
+generated/
 
 # Logs
 logs/

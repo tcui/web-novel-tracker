@@ -25,6 +25,7 @@ const imageGenerator = new ImageGenerator();
 app.use(logger.requestLogger);
 app.use(express.json());
 app.use(express.static('public'));
+app.use('/images', express.static('generated/images'));
 
 // Routes
 app.get('/api/books', async (req: Request, res: Response) => {
