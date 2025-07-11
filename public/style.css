@@ -1,0 +1,251 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f5f5f5;
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 40px;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+header h1 {
+    color: #2c3e50;
+    margin-bottom: 10px;
+}
+
+header p {
+    color: #7f8c8d;
+}
+
+/* Two-column layout */
+.two-column-layout {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 30px;
+    align-items: start;
+}
+
+.left-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.right-column {
+    display: flex;
+    flex-direction: column;
+}
+
+section {
+    background: white;
+    margin-bottom: 30px;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+section h2 {
+    color: #2c3e50;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #3498db;
+    padding-bottom: 10px;
+}
+
+.add-book form {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.add-book input {
+    flex: 1;
+    min-width: 300px;
+    padding: 12px;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.add-book input:focus {
+    outline: none;
+    border-color: #3498db;
+}
+
+.add-book button {
+    padding: 12px 24px;
+    background: #3498db;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background 0.3s;
+}
+
+.add-book button:hover {
+    background: #2980b9;
+}
+
+.add-book button:disabled {
+    background: #95a5a6;
+    cursor: not-allowed;
+}
+
+.book-item {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 15px;
+    transition: transform 0.2s;
+}
+
+.book-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.book-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #2c3e50;
+    margin-bottom: 8px;
+}
+
+.book-url {
+    color: #7f8c8d;
+    font-size: 14px;
+    margin-bottom: 10px;
+    word-break: break-all;
+}
+
+.book-status {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.chapter-count {
+    background: #e8f5e8;
+    color: #27ae60;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+}
+
+.last-updated {
+    font-size: 12px;
+    color: #7f8c8d;
+}
+
+.remove-book {
+    background: #e74c3c;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.remove-book:hover {
+    background: #c0392b;
+}
+
+.empty-state {
+    text-align: center;
+    color: #7f8c8d;
+    font-style: italic;
+    padding: 40px;
+}
+
+.summary-item {
+    border-left: 4px solid #3498db;
+    padding: 15px;
+    margin-bottom: 15px;
+    background: #f8f9fa;
+    border-radius: 8px;
+}
+
+.summary-title {
+    font-weight: bold;
+    color: #2c3e50;
+    margin-bottom: 8px;
+}
+
+.summary-content {
+    color: #555;
+}
+
+.chapter-heading {
+    font-weight: bold;
+    color: #2c3e50;
+    margin: 15px 0 10px 0;
+    padding: 8px 12px;
+    background: #f8f9fa;
+    border-left: 4px solid #3498db;
+    border-radius: 4px;
+}
+
+.summary-paragraph {
+    margin: 10px 0;
+    line-height: 1.6;
+    text-align: justify;
+}
+
+.loading {
+    text-align: center;
+    padding: 20px;
+    color: #7f8c8d;
+}
+
+.summary-image {
+    margin: 15px 0;
+    text-align: center;
+}
+
+.summary-image img {
+    max-width: 100%;
+    height: auto;
+    max-height: 400px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    transition: transform 0.2s ease;
+}
+
+.summary-image img:hover {
+    transform: scale(1.02);
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .two-column-layout {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .add-book form {
+        flex-direction: column;
+    }
+    
+    .add-book input {
+        min-width: 100%;
+    }
+}

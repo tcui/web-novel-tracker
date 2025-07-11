@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Novel Tracker</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Support for international characters */
+        * {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans CJK', 'Malgun Gothic', 'Yu Gothic', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        }
+        
+        .book-title, .summary-content {
+            word-break: break-word;
+            line-height: 1.6;
+        }
+        
+        /* Ensure proper text rendering for international characters */
+        .book-title {
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+        
+        /* Support for right-to-left languages */
+        [dir="rtl"] .book-title {
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📚 Web Novel Tracker</h1>
+            <p>Track your favorite web novels and get daily summaries</p>
+        </header>
+
+        <main class="two-column-layout">
+            <div class="left-column">
+                <section class="add-book">
+                    <h2>Add New Book</h2>
+                    <form id="add-book-form">
+                        <input type="url" id="book-url" placeholder="Enter book URL (e.g., https://www.piaotia.com/html/13/13191/)" required>
+                        <button type="submit">Add Book</button>
+                    </form>
+                </section>
+
+                <section class="books-list">
+                    <h2>Tracked Books</h2>
+                    <div id="books-container">
+                        <p class="empty-state">No books added yet. Add your first book above!</p>
+                    </div>
+                </section>
+            </div>
+
+            <div class="right-column">
+                <section class="daily-summary">
+                    <h2>Daily Summary</h2>
+                    <div id="summary-container">
+                        <p class="empty-state">No new chapters today.</p>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
